@@ -57,23 +57,26 @@ jobs:
         id: metadata
         shell: bash
         run: |
-          jversion="0.1.0"
-          
+          # 默认从build.gradle.kts读取versionName
+          jversion=$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts || echo "0.1.0")
+
           if [[ "${{ github.ref_type }}" == "tag" ]]; then
             raw_tag="${{ github.ref_name }}"
             echo "Detected Tag: $raw_tag"
-          
+
             # 去除 'v' 或 'V' 前缀 (支持 v1.0.0, V1.0.0, 1.0.0)
             version=$(echo "$raw_tag" | sed -E 's/^[vV]//')
-          
+
             # 规范化版本 (只保留数字部分 x.y.z，去掉 -rc, -beta 等后缀用于 jpackage)
             jversion=$(echo "$version" | sed -E 's/^([0-9]+\.[0-9]+(\.[0-9]+)?).*/\1/')
-          
+
             if [ -z "$jversion" ]; then
-              echo "Warning: Could not parse numeric version from tag $raw_tag, defaulting to 0.1.0"
-              jversion="0.1.0"
+              echo "Warning: Could not parse numeric version from tag $raw_tag, using versionName from build.gradle.kts"
+              jversion=$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts || echo "0.1.0")
             fi
             echo "Using Tag Version: $version (JPackage: $jversion)"
+          else
+            echo "Using versionName from build.gradle.kts: $jversion"
           fi
 
           echo "jversion=$jversion" >> $GITHUB_OUTPUT
