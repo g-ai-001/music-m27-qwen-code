@@ -9,15 +9,12 @@
 
 ## 版本规划
 
-### v0.1.2 (当前版本)
+### v0.1.2
 **目标**: 修复workflow构建问题
 
 #### 已完成任务:
 - [x] 修复workflow中jversion硬编码问题，从build.gradle.kts动态读取versionName
-
-#### 预期改进:
-- 修复workflow构建失败问题
-- 确保CI流水线正常通过
+- [x] 修复Coil3导入路径问题，将所有coil.compose替换为coil3.compose
 
 ### v0.1.1
 **目标**: 代码重构优化，修复已知问题
