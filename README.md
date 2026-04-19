@@ -24,6 +24,13 @@
 
 ## 版本历史
 
+### v0.1.1
+- 修复HomeScreen中coil3导入问题
+- 修复MusicRepository中toggleFavorite方法的bug
+- 统一组件代码，消除重复代码
+- 优化Repository中的空安全处理
+- 改善代码质量和可维护性
+
 ### v0.1.0
 - 项目基础框架搭建
 - 本地音乐扫描功能

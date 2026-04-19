@@ -9,15 +9,15 @@
 
 ## 版本规划
 
-### v0.1.1 (规划中)
+### v0.1.1 (当前版本)
 **目标**: 代码重构优化，修复已知问题
 
-#### 计划任务:
-- [ ] 修复HomeScreen中coil3导入问题
-- [ ] 修复MusicRepository中toggleFavorite方法的bug
-- [ ] 统一组件代码，消除重复代码
-- [ ] 优化Repository中的空安全处理
-- [ ] 改善代码质量和可维护性
+#### 已完成任务:
+- [x] 修复HomeScreen中coil3导入问题
+- [x] 修复MusicRepository中toggleFavorite方法的bug
+- [x] 统一组件代码，消除重复代码
+- [x] 优化Repository中的空安全处理
+- [x] 改善代码质量和可维护性
 
 #### 预期改进:
 - 修复可能导致的运行时异常
