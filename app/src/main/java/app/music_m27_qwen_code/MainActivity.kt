@@ -88,6 +88,7 @@ class MainActivity : ComponentActivity() {
 fun MusicApp() {
     val libraryViewModel: LibraryViewModel = hiltViewModel()
     val playerViewModel: PlayerViewModel = hiltViewModel()
+    val context = androidx.compose.ui.platform.LocalContext.current
 
     val libraryState by libraryViewModel.uiState.collectAsState()
     val playerState by playerViewModel.uiState.collectAsState()
@@ -96,8 +97,8 @@ fun MusicApp() {
     var currentTab by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(Unit) {
-        libraryViewModel.initialize(androidx.compose.ui.platform.LocalContext.current)
-        playerViewModel.initialize(androidx.compose.ui.platform.LocalContext.current)
+        libraryViewModel.initialize(context)
+        playerViewModel.initialize(context)
         playerViewModel.startPositionUpdates()
         libraryViewModel.scanMusic()
     }
