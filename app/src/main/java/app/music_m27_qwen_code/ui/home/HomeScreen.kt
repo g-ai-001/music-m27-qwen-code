@@ -290,7 +290,7 @@ private fun AlbumTab(songs: List<Song>) {
                 supportingContent = { Text("${albumSongs.size} 首歌曲") },
                 leadingContent = {
                     albumSongs.firstOrNull()?.albumArtUri?.let { uri ->
-                        coil.compose.AsyncImage(
+                        coil3.compose.AsyncImage(
                             model = uri,
                             contentDescription = album,
                             modifier = Modifier

@@ -11,7 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import app.music_m27_qwen_code.data.model.Song
 import app.music_m27_qwen_code.ui.theme.TextPrimary
 import app.music_m27_qwen_code.ui.theme.TextSecondary

@@ -296,7 +296,7 @@ private fun RecentSongCard(song: Song, onClick: () -> Unit) {
             .width(100.dp)
             .clickable { onClick() }
     ) {
-        coil.compose.AsyncImage(
+        coil3.compose.AsyncImage(
             model = song.albumArtUri,
             contentDescription = song.title,
             modifier = Modifier
