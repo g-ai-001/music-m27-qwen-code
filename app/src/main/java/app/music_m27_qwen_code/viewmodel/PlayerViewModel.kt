@@ -15,6 +15,7 @@ import app.music_m27_qwen_code.data.repository.MusicRepository
 import app.music_m27_qwen_code.service.MusicService
 import app.music_m27_qwen_code.utils.LyricParser
 import app.music_m27_qwen_code.utils.Logger
+import app.music_m27_qwen_code.utils.LyricLine
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.isActive

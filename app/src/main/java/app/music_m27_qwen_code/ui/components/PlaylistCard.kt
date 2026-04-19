@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.QueueMusic
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,7 +15,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import app.music_m27_qwen_code.data.model.Playlist
 import app.music_m27_qwen_code.ui.theme.PrimaryGreen
 import app.music_m27_qwen_code.ui.theme.SurfaceDark
@@ -52,7 +54,7 @@ fun PlaylistCard(
                         contentScale = ContentScale.Crop
                     )
                 } ?: Icon(
-                    imageVector = androidx.compose.material.icons.Icons.Default.QueueMusic,
+                    imageVector = Icons.Default.QueueMusic,
                     contentDescription = null,
                     modifier = Modifier.size(48.dp),
                     tint = PrimaryGreen

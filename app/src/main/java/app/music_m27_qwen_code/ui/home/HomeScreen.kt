@@ -21,6 +21,7 @@ import app.music_m27_qwen_code.ui.components.*
 import app.music_m27_qwen_code.ui.theme.*
 import app.music_m27_qwen_code.viewmodel.HomeTab
 import app.music_m27_qwen_code.viewmodel.LibraryUiState
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -289,7 +290,7 @@ private fun AlbumTab(songs: List<Song>) {
                 supportingContent = { Text("${albumSongs.size} 首歌曲") },
                 leadingContent = {
                     albumSongs.firstOrNull()?.albumArtUri?.let { uri ->
-                        coil.compose.AsyncImage(
+                        coil3.compose.AsyncImage(
                             model = uri,
                             contentDescription = album,
                             modifier = Modifier
@@ -320,7 +321,7 @@ private fun RecentSongCard(song: Song, onClick: () -> Unit) {
             .width(100.dp)
             .clickable { onClick() }
     ) {
-        coil.compose.AsyncImage(
+        coil3.compose.AsyncImage(
             model = song.albumArtUri,
             contentDescription = song.title,
             modifier = Modifier

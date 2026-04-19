@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -254,7 +255,7 @@ private fun StatItem(
     icon: androidx.compose.ui.graphics.vector.ImageVector,
     count: Int,
     label: String,
-    tint: androidx.compose.ui.graphics.Color
+    tint: Color
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -295,7 +296,7 @@ private fun RecentSongCard(song: Song, onClick: () -> Unit) {
             .width(100.dp)
             .clickable { onClick() }
     ) {
-        coil.compose.AsyncImage(
+        coil3.compose.AsyncImage(
             model = song.albumArtUri,
             contentDescription = song.title,
             modifier = Modifier
