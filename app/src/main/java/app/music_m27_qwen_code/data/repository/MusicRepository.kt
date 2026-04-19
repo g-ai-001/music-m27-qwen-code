@@ -8,6 +8,7 @@ import app.music_m27_qwen_code.data.database.MusicDatabase
 import app.music_m27_qwen_code.data.model.*
 import app.music_m27_qwen_code.utils.MediaScanner
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 
 class MusicRepository(private val context: Context) {
     private val database = MusicDatabase.getInstance(context)
@@ -72,9 +73,12 @@ class MusicRepository(private val context: Context) {
     fun isFavorite(songId: Long): Flow<Boolean> = favoriteDao.isFavorite(songId)
 
     suspend fun toggleFavorite(songId: Long) {
-        val isFav = favoriteDao.isFavorite(songId)
-        // Need to check actual state - simplified for now
-        favoriteDao.addFavorite(Favorite(songId))
+        val isFav = favoriteDao.isFavorite(songId).first()
+        if (isFav) {
+            favoriteDao.removeFavorite(songId)
+        } else {
+            favoriteDao.addFavorite(Favorite(songId))
+        }
     }
 
     suspend fun addFavorite(songId: Long) {

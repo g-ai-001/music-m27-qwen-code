@@ -86,11 +86,14 @@ class PlayerViewModel : ViewModel() {
     fun setPlaylist(songs: List<Song>, startIndex: Int = 0) {
         viewModelScope.launch {
             _uiState.update { it.copy(playlist = songs) }
+            val repo = repository
             mediaController?.let { controller ->
-                controller.clearMediaItems()
-                val mediaItems = songs.map { repository?.songToMediaItem(it)!! }
-                controller.setMediaItems(mediaItems, startIndex, 0L)
-                controller.prepare()
+                if (repo != null) {
+                    controller.clearMediaItems()
+                    val mediaItems = songs.map { repo.songToMediaItem(it) }
+                    controller.setMediaItems(mediaItems, startIndex, 0L)
+                    controller.prepare()
+                }
             }
         }
     }
@@ -123,12 +126,9 @@ class PlayerViewModel : ViewModel() {
     fun toggleFavorite() {
         viewModelScope.launch {
             val song = _uiState.value.currentSong ?: return@launch
-            repository?.let { repo ->
-                if (_uiState.value.isFavorite) {
-                    repo.removeFavorite(song.id)
-                } else {
-                    repo.addFavorite(song.id)
-                }
+            val repo = repository
+            if (repo != null) {
+                repo.toggleFavorite(song.id)
                 _uiState.update { it.copy(isFavorite = !it.isFavorite) }
             }
         }

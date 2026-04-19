@@ -290,7 +290,7 @@ private fun AlbumTab(songs: List<Song>) {
                 supportingContent = { Text("${albumSongs.size} 首歌曲") },
                 leadingContent = {
                     albumSongs.firstOrNull()?.albumArtUri?.let { uri ->
-                        coil3.compose.AsyncImage(
+                        coil.compose.AsyncImage(
                             model = uri,
                             contentDescription = album,
                             modifier = Modifier
@@ -321,7 +321,7 @@ private fun RecentSongCard(song: Song, onClick: () -> Unit) {
             .width(100.dp)
             .clickable { onClick() }
     ) {
-        coil3.compose.AsyncImage(
+        coil.compose.AsyncImage(
             model = song.albumArtUri,
             contentDescription = song.title,
             modifier = Modifier
